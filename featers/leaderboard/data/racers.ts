@@ -1,6 +1,6 @@
-import { IRacer } from "../interfaces/racer.interface";
+import { Racer } from "../types/racer.interface";
 
-export const racers: IRacer[] = [
+export const racers: Racer[] = [
     {
         id: 1,
         name: "Oscar Piastri",

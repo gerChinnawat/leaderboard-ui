@@ -3,24 +3,27 @@
 import { useState } from 'react';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 
-import { racers } from '../data/racers';
-import { IRacer } from '../interfaces/racer.interface';
-import { toMillisecond } from '../utils/toMillisecond';
 import {
     Item,
     ItemContent,
     ItemDescription,
     ItemTitle,
 } from "@/components/ui/item";
-import AddRacerFrom from '../components/add-racer-form';
+
+import { racers } from '../data/racers';
+import { Racer } from '../types/racer.interface';
+import { toMillisecond } from '../utils/toMillisecond';
+import AddRacerFrom from '../components/AddRacerForm';
 import { toTimeStampForm } from '../utils/toTimeStampForm';
 
+import { MAX_RACER } from '../constants/racer.constant';
+
 const LeaderboardScreen = () => {
-    const [boardleader, setboardleader] = useState<IRacer[]>(racers);
+    const [boardleader, setboardleader] = useState<Racer[]>(racers);
     const [parent] = useAutoAnimate();
 
-    const onAddRacer = (racer: IRacer) => {
-        const newRacer: IRacer = {
+    const onAddRacer = (racer: Racer) => {
+        const newRacer: Racer = {
             id: boardleader.length + 1,
             name: racer.name,
             colorTag: racer.colorTag,
@@ -38,13 +41,13 @@ const LeaderboardScreen = () => {
         <div className="flex gap-5">
             <AddRacerFrom
                 onAddRacer={onAddRacer}
-                disable={boardleader.length >= 20}
+                disable={boardleader.length >= MAX_RACER}
             />
             <div
                 ref={parent}
                 className="grid grid-flow-col grid-rows-10 gap-1"
             >
-                {boardleader.map((racer: IRacer, index) => (
+                {boardleader.map((racer: Racer, index) => (
                     <div key={racer.id} className={"flex w-full max-w-md flex-col gap-4 min-w-60"}>
                         <Item variant="outline">
                             <ItemContent>
