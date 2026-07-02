@@ -45,7 +45,7 @@ const LeaderboardScreen = () => {
             />
             <div
                 ref={parent}
-                className="grid grid-cols-1 sm:grid-flow-col sm:grid-rows-6 lg:grid-rows-11 gap-1 w-full md:w-auto"
+                className="grid grid-cols-1 sm:grid-flow-col sm:grid-rows-6 lg:grid-rows-10 gap-1 w-full md:w-auto"
             >
                 {boardleader.map((racer: Racer, index) => (
                     <div key={racer.id} className={"flex w-full max-w-md flex-col gap-4 min-w-0 sm:min-w-60"}>

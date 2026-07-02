@@ -68,7 +68,7 @@ const AddRacerFrom = ({
         <Form {...form}>
             <form>
                 <h1 className="text-center text-2xl mb-2 text-white font-extrabold">F1 Leaderboard</h1>
-                <Card className="mx-auto max-w-md">
+                <Card className="mx-auto max-w-md p-8">
                     <CardHeader>
                         <CardTitle className="text-black font-bold">Simulate Your Racer</CardTitle>
                         <CardDescription>
