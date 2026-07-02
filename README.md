@@ -127,8 +127,6 @@ This project follows a **Feature-based Architecture**, organizing code by busine
 
 ## 📁 Project Structure
 
-## 📁 Project Structure
-
 ```text
 .
 ├── app/
