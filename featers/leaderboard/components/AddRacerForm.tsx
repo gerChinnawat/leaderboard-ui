@@ -55,7 +55,7 @@ const AddRacerFrom = ({
             defaultValues: {
                 name: "",
                 timeStamp: "",
-                colorTag: "#6366f1",
+                colorTag: "#58ef5e",
             },
     });
 
@@ -67,7 +67,7 @@ const AddRacerFrom = ({
     return (
         <Form {...form}>
             <form>
-                <h1 className="text-center text-2xl mb-2 text-white font-extrabold">F1 Leaderboard</h1>
+                <h1 className="text-center text-2xl text-white font-extrabold">F1 Leaderboard</h1>
                 <Card className="mx-auto max-w-md p-8">
                     <CardHeader>
                         <CardTitle className="text-black font-bold">Simulate Your Racer</CardTitle>
@@ -75,7 +75,7 @@ const AddRacerFrom = ({
                             Input racer name, time, and pick a color tag.
                         </CardDescription>
                     </CardHeader>
-                    <CardContent className="grid grid-cols-1 gap-2">
+                    <CardContent className="grid grid-cols-1 gap-3">
                         <FormField
                             control={form.control}
                             name="name"
@@ -97,7 +97,7 @@ const AddRacerFrom = ({
                             control={form.control}
                             name="timeStamp"
                             render={({ field }) => (
-                                <FormItem className="font-sans font-bold">
+                                <FormItem className="font-sans">
                                     <FormLabel htmlFor="timeStamp" className="text-black font-bold">Time:</FormLabel>
                                     <FormControl>
                                         <InputOTP
@@ -105,16 +105,16 @@ const AddRacerFrom = ({
                                             value={field.value}
                                             onChange={field.onChange}
                                         >
-                                            <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
+                                            <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl font-bold">
                                                 <InputOTPSlot index={0} />
                                             </InputOTPGroup>
                                             <div className="text-4xl">:</div>
-                                            <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
+                                            <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl font-bold">
                                                 <InputOTPSlot index={1} />
                                                 <InputOTPSlot index={2} />
                                             </InputOTPGroup>
                                             <div className="text-4xl">.</div>
-                                            <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
+                                            <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl font-bold">
                                                 <InputOTPSlot index={3} />
                                                 <InputOTPSlot index={4} />
                                                 <InputOTPSlot index={5} />
