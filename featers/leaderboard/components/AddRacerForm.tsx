@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { Car } from "lucide-react";
 
 import {
     Form,
@@ -41,8 +42,11 @@ const AddRacerFrom = ({
     disable=false,
 }: AddRacerFormProps) => {
     const formSchema = z.object({
-        name: z.string().max(32, "Name is too long.").min(1, "Input your racer name"),
-        timeStamp: z.string().length(6, "Time has to be fullfil."),
+        name: z.string().max(20, "Name is too long.").min(1, "Input your racer name"),
+        timeStamp: z
+            .string()
+            .length(6, "Time has to be fullfil.")
+            .regex(/^\d{6}$/, "Time must be numbers only."),
         colorTag: z.string().regex(/^#([0-9A-F]{3}){1,2}$/i, "Invalid hex color"),
     });
 
@@ -57,17 +61,18 @@ const AddRacerFrom = ({
 
     const onSubmit = (values: z.infer<typeof formSchema>) => {
         onAddRacer(values);
+        form.reset();
     };
 
     return (
         <Form {...form}>
             <form>
-                <h1 className="text-center text-2xl mb-2">F1 Leaderboard</h1>
+                <h1 className="text-center text-2xl mb-2 text-white font-extrabold">F1 Leaderboard</h1>
                 <Card className="mx-auto max-w-md">
                     <CardHeader>
-                        <CardTitle>Simulate Your Racer</CardTitle>
+                        <CardTitle className="text-black font-bold">Simulate Your Racer</CardTitle>
                         <CardDescription>
-                            Input your racer name, time, and pick a color tag.
+                            Input racer name, time, and pick a color tag.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="grid grid-cols-1 gap-2">
@@ -76,9 +81,10 @@ const AddRacerFrom = ({
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel htmlFor="name">Name:</FormLabel>
+                                    <FormLabel htmlFor="name" className="text-black font-bold">Name:</FormLabel>
                                     <FormControl>
                                         <Input
+                                            className="text-black font-bold"
                                             value={field.value}
                                             onChange={field.onChange}
                                         />
@@ -91,8 +97,8 @@ const AddRacerFrom = ({
                             control={form.control}
                             name="timeStamp"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel htmlFor="timeStamp">Time:</FormLabel>
+                                <FormItem className="font-sans font-bold">
+                                    <FormLabel htmlFor="timeStamp" className="text-black font-bold">Time:</FormLabel>
                                     <FormControl>
                                         <InputOTP
                                             maxLength={6}
@@ -124,7 +130,7 @@ const AddRacerFrom = ({
                             name="colorTag"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel htmlFor="colorTag">Color Tag:</FormLabel>
+                                    <FormLabel htmlFor="colorTag" className="text-black font-bold">Color Tag:</FormLabel>
                                     <FormControl>
                                         <ColorPicker
                                             value={field.value}
@@ -138,11 +144,11 @@ const AddRacerFrom = ({
                     </CardContent>
                     <CardFooter>
                         <Button
-                            className="w-full"
+                            className="w-full font-bold"
                             onClick={form.handleSubmit(onSubmit)}
                             disabled={disable}
                         >
-                            Add new Racer
+                            Add new Racer <Car />
                         </Button>
                     </CardFooter>
                 </Card>
