@@ -63,7 +63,7 @@ describe('AddRacerForm', () => {
     render(<AddRacerFrom onAddRacer={mockOnAddRacer} />);
     
     expect(screen.getByText(/Simulate Your Racer/i)).toBeInTheDocument();
-    expect(screen.getByText(/Input your racer name/i)).toBeInTheDocument();
+    expect(screen.getByText(/Input racer name, time, and pick a color tag\./i)).toBeInTheDocument();
   });
 
   it('should render name input field', () => {

@@ -59,9 +59,9 @@ describe('LeaderboardScreen', () => {
 
   it('should display racer times', () => {
     render(<LeaderboardScreen />);
-    
-    const descriptions = screen.getAllByTestId('item-description');
-    expect(descriptions.length).toBeGreaterThan(0);
+
+    const times = screen.getAllByTestId('racer-time');
+    expect(times.length).toBeGreaterThan(0);
   });
 
   it('should display Oscar Piastri as one of the racers', () => {
@@ -96,13 +96,13 @@ describe('LeaderboardScreen', () => {
 
   it('should display racer times in correct format', () => {
     render(<LeaderboardScreen />);
-    
-    const descriptions = screen.getAllByTestId('item-description');
+
+    const times = screen.getAllByTestId('racer-time');
     const timeStampRegex = /^\d{1,2}:\d{2}\.\d{3}$/;
-    
-    descriptions.forEach((desc) => {
-      if (desc.textContent) {
-        expect(timeStampRegex.test(desc.textContent)).toBe(true);
+
+    times.forEach((time) => {
+      if (time.textContent) {
+        expect(timeStampRegex.test(time.textContent)).toBe(true);
       }
     });
   });
@@ -116,16 +116,11 @@ describe('LeaderboardScreen', () => {
 
   it('should display racer position numbers', () => {
     render(<LeaderboardScreen />);
-    
-    const titles = screen.getAllByTestId('item-title');
-    let positionNumbers = 0;
-    
-    titles.forEach((title) => {
-      if (title.textContent?.match(/^\d+\./)) {
-        positionNumbers++;
-      }
+
+    const positions = screen.getAllByTestId('racer-position');
+    expect(positions.length).toBeGreaterThan(0);
+    positions.forEach((position, index) => {
+      expect(position.textContent).toBe(String(index + 1));
     });
-    
-    expect(positionNumbers).toBeGreaterThan(0);
   });
 });

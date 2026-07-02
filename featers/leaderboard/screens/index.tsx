@@ -54,7 +54,7 @@ const LeaderboardScreen = () => {
                                 <ItemTitle
                                     className='text-black font-bold text-[16px]'
                                 >
-                                        <div className={index === 0 ? "bg-red-500 h-6 w-6 text-center rounded-xl" : "h-6 w-6 text-center"}>{index + 1}</div>
+                                        <div data-testid="racer-position" className={index === 0 ? "bg-red-500 h-6 w-6 text-center rounded-xl" : "h-6 w-6 text-center"}>{index + 1}</div>
                                         <div className='flex gap-2'>
                                             <div 
                                                 style={{ backgroundColor: racer.colorTag }}
@@ -66,7 +66,7 @@ const LeaderboardScreen = () => {
                                 </ItemTitle>
                                 <div className='text-black text-[16px] font-bold'>
                                     <div className='flex w-full justify-between'>
-                                        <div>{racer.timeStamp}</div>
+                                        <div data-testid="racer-time">{racer.timeStamp}</div>
                                         {index === 0 ? "LEADER" :<div className='text-red-500'>+{diffFromLeader(leader?.timeStamp || racers[0].timeStamp, racer.timeStamp)}</div>}
                                     </div>
                                 </div>
