@@ -1,4 +1,4 @@
-# Project Name
+# Leaderboard: Next.js Template
 
 ## 📖 Overview
 
