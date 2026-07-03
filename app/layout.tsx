@@ -34,7 +34,9 @@ export default function RootLayout({
       lang="en"
       className={`${titilliumWeb.variable} ${orbitron.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body>{children}</body>
+      <body className="min-h-screen w-full overflow-y-auto bg-[url('/bg.jpg')] bg-cover bg-center bg-fixed font-sans flex flex-col items-center justify-center px-4 py-6 sm:px-6 sm:py-8">
+        {children}
+      </body>
     </html>
   );
 }

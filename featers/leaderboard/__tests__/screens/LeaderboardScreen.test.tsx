@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { render, screen } from '@testing-library/react';
 import LeaderboardScreen from '../../screens/index';
 import { racers } from '../../data/racers';
@@ -17,10 +17,10 @@ jest.mock('../../components/AddRacerForm', () => {
 
 // Mock UI components
 jest.mock('@/components/ui/item', () => ({
-  Item: ({ children, ...props }: any) => <div data-testid="racer-item" {...props}>{children}</div>,
-  ItemContent: ({ children }: any) => <div>{children}</div>,
-  ItemDescription: ({ children }: any) => <div data-testid="item-description">{children}</div>,
-  ItemTitle: ({ children }: any) => <div data-testid="item-title">{children}</div>,
+  Item: ({ children, ...props }: { children: ReactNode }) => <div data-testid="racer-item" {...props}>{children}</div>,
+  ItemContent: ({ children }: { children: ReactNode }) => <div>{children}</div>,
+  ItemDescription: ({ children }: { children: ReactNode }) => <div data-testid="item-description">{children}</div>,
+  ItemTitle: ({ children }: { children: ReactNode }) => <div data-testid="item-title">{children}</div>,
 }));
 
 describe('LeaderboardScreen', () => {

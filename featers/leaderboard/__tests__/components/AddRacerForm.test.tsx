@@ -1,40 +1,39 @@
-import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { ReactNode } from 'react';
+import { render, screen } from '@testing-library/react';
 import AddRacerFrom from '../../components/AddRacerForm';
-import { Racer } from '../../types/racer.interface';
 
 // Mock the form components
 jest.mock('@/components/ui/form', () => ({
-  Form: ({ children, form }: any) => <>{children}</>,
-  FormControl: ({ children }: any) => <div>{children}</div>,
-  FormField: ({ render }: any) => render({ field: { value: '', onChange: jest.fn() } }),
-  FormItem: ({ children }: any) => <div>{children}</div>,
+  Form: ({ children }: { children: ReactNode }) => <>{children}</>,
+  FormControl: ({ children }: { children: ReactNode }) => <div>{children}</div>,
+  FormField: ({ render }: { render: (args: { field: { value: string; onChange: () => void } }) => ReactNode }) =>
+    render({ field: { value: '', onChange: jest.fn() } }),
+  FormItem: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   FormMessage: () => <div></div>,
-  FormLabel: ({ children, ...props }: any) => <label {...props}>{children}</label>,
+  FormLabel: ({ children, ...props }: { children: ReactNode }) => <label {...props}>{children}</label>,
 }));
 
 jest.mock('@/components/ui/button', () => ({
-  Button: ({ children, ...props }: any) => <button {...props}>{children}</button>,
+  Button: ({ children, ...props }: { children: ReactNode }) => <button {...props}>{children}</button>,
 }));
 
 jest.mock('@/components/ui/card', () => ({
-  Card: ({ children }: any) => <div className="card">{children}</div>,
-  CardContent: ({ children }: any) => <div className="card-content">{children}</div>,
-  CardDescription: ({ children }: any) => <div className="card-description">{children}</div>,
-  CardFooter: ({ children }: any) => <div className="card-footer">{children}</div>,
-  CardHeader: ({ children }: any) => <div className="card-header">{children}</div>,
-  CardTitle: ({ children }: any) => <div className="card-title">{children}</div>,
+  Card: ({ children }: { children: ReactNode }) => <div className="card">{children}</div>,
+  CardContent: ({ children }: { children: ReactNode }) => <div className="card-content">{children}</div>,
+  CardDescription: ({ children }: { children: ReactNode }) => <div className="card-description">{children}</div>,
+  CardFooter: ({ children }: { children: ReactNode }) => <div className="card-footer">{children}</div>,
+  CardHeader: ({ children }: { children: ReactNode }) => <div className="card-header">{children}</div>,
+  CardTitle: ({ children }: { children: ReactNode }) => <div className="card-title">{children}</div>,
 }));
 
 jest.mock('@/components/ui/input-otp', () => ({
-  InputOTP: ({ children, ...props }: any) => <div data-testid="input-otp" {...props}>{children}</div>,
-  InputOTPGroup: ({ children }: any) => <div>{children}</div>,
-  InputOTPSlot: ({ index }: any) => <input data-testid={`otp-slot-${index}`} />,
+  InputOTP: ({ children, ...props }: { children: ReactNode }) => <div data-testid="input-otp" {...props}>{children}</div>,
+  InputOTPGroup: ({ children }: { children: ReactNode }) => <div>{children}</div>,
+  InputOTPSlot: ({ index }: { index: number }) => <input data-testid={`otp-slot-${index}`} />,
 }));
 
 jest.mock('@/components/ui/color-picker', () => ({
-  ColorPicker: ({ value, onChange }: any) => (
+  ColorPicker: ({ value, onChange }: { value: string; onChange: (value: string) => void }) => (
     <input
       data-testid="color-picker"
       value={value}
@@ -45,7 +44,7 @@ jest.mock('@/components/ui/color-picker', () => ({
 }));
 
 jest.mock('@/components/ui/input', () => ({
-  Input: ({ value, onChange, ...props }: any) => (
+  Input: ({ value, onChange, ...props }: { value: string; onChange: () => void }) => (
     <input data-testid="input" value={value} onChange={onChange} {...props} />
   ),
 }));

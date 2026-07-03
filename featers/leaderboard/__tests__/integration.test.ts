@@ -89,7 +89,7 @@ describe('Leaderboard Integration Tests', () => {
 
   describe('All racers validation', () => {
     it('should have all racers with valid structure', () => {
-      racers.forEach((racer, index) => {
+      racers.forEach((racer) => {
         expect(racer).toHaveProperty('name');
         expect(racer).toHaveProperty('colorTag');
         expect(racer).toHaveProperty('timeStamp');
