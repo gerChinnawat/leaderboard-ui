@@ -1,6 +1,18 @@
 import { ReactNode } from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import AddRacerFrom from '../../components/AddRacerForm';
+
+const mockReset = jest.fn();
+const validValues = { name: 'Test Racer', timeStamp: '123456', colorTag: '#ffffff' };
+
+// Bypass real Zod validation so submitting the mocked form invokes onSubmit directly
+jest.mock('react-hook-form', () => ({
+  useForm: () => ({
+    control: {},
+    handleSubmit: (fn: (values: typeof validValues) => void) => () => fn(validValues),
+    reset: mockReset,
+  }),
+}));
 
 // Mock the form components
 jest.mock('@/components/ui/form', () => ({
@@ -119,12 +131,14 @@ describe('AddRacerForm', () => {
     expect(screen.getByTestId('color-picker')).toBeInTheDocument();
   });
 
-  it('should call onAddRacer when form is submitted with valid data', async () => {
+  it('should call onAddRacer and reset the form when submitted with valid data', () => {
     const mockOnAddRacer = jest.fn();
     render(<AddRacerFrom onAddRacer={mockOnAddRacer} />);
 
-    // Note: Since the form mocking is simplified, this test validates structure
-    expect(screen.getByText(/Simulate Your Racer/i)).toBeInTheDocument();
+    fireEvent.click(screen.getByText(/Add new Racer/i));
+
+    expect(mockOnAddRacer).toHaveBeenCalledWith(validValues);
+    expect(mockReset).toHaveBeenCalled();
   });
 
   it('should have max length for name field', () => {

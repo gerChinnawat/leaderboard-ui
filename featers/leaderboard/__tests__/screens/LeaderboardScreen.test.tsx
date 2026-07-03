@@ -1,17 +1,37 @@
 import { ReactNode } from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import LeaderboardScreen from '../../screens/index';
 import { racers } from '../../data/racers';
+import { Racer } from '../../types/racer.interface';
 
 // Mock the form kit animation
 jest.mock('@formkit/auto-animate/react', () => ({
   useAutoAnimate: () => [{ current: null }],
 }));
 
-// Mock AddRacerForm component
+// Mock AddRacerForm component, exposing onAddRacer via a clickable button
 jest.mock('../../components/AddRacerForm', () => {
-  return function DummyAddRacerForm() {
-    return <div data-testid="add-racer-form">Add Racer Form</div>;
+  return function DummyAddRacerForm({
+    onAddRacer,
+    disable,
+  }: {
+    onAddRacer: (racer: Racer) => void;
+    disable?: boolean;
+  }) {
+    return (
+      <div data-testid="add-racer-form">
+        Add Racer Form
+        <button
+          data-testid="trigger-add-racer"
+          disabled={disable}
+          onClick={() =>
+            onAddRacer({ name: 'New Racer', colorTag: '#000000', timeStamp: '000000' })
+          }
+        >
+          Add
+        </button>
+      </div>
+    );
   };
 });
 
@@ -122,5 +142,34 @@ describe('LeaderboardScreen', () => {
     positions.forEach((position, index) => {
       expect(position.textContent).toBe(String(index + 1));
     });
+  });
+
+  it('should add a new racer and place it at the top when it is fastest', () => {
+    render(<LeaderboardScreen />);
+
+    const initialCount = screen.getAllByTestId('racer-item').length;
+    fireEvent.click(screen.getByTestId('trigger-add-racer'));
+
+    const racerItems = screen.getAllByTestId('racer-item');
+    expect(racerItems.length).toBe(initialCount + 1);
+
+    const titles = screen.getAllByTestId('item-title');
+    const newRacerFound = titles.some((title) => title.textContent?.includes('New Racer'));
+    expect(newRacerFound).toBe(true);
+
+    expect(screen.getByText('LEADER')).toBeInTheDocument();
+  });
+
+  it('should disable the add racer form once MAX_RACER is reached', () => {
+    render(<LeaderboardScreen />);
+
+    const button = screen.getByTestId('trigger-add-racer') as HTMLButtonElement;
+    const remainingSlots = 20 - racers.length;
+
+    for (let i = 0; i < remainingSlots; i++) {
+      fireEvent.click(button);
+    }
+
+    expect(button.disabled).toBe(true);
   });
 });
