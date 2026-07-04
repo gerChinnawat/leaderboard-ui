@@ -40,10 +40,13 @@ const LeaderboardScreen = () => {
       <AddRacerFrom onAddRacer={onAddRacer} disable={boardleader.length >= MAX_RACER} />
       <div
         ref={parent}
-        className="grid grid-cols-1 sm:grid-flow-col sm:grid-rows-6 lg:grid-rows-10 gap-1 w-full md:w-auto"
+        className="grid grid-cols-1 sm:grid-flow-col sm:grid-rows-10 lg:grid-rows-10 gap-1 w-full md:w-auto sm:min-w-fit"
       >
         {boardleader.map((racer: Racer, index) => (
-          <div key={racer.id} className={'flex w-full max-w-md flex-col gap-4 min-w-0 sm:min-w-60'}>
+          <div
+            key={racer.id}
+            className={'flex w-full max-w-full flex-col gap-4 min-w-0 sm:min-w-60'}
+          >
             <Item variant="outline" className="bg-gray-50 py-1.5 px-4">
               <ItemContent>
                 <ItemTitle className="text-black font-bold text-[16px]">

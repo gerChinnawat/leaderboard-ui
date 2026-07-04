@@ -61,7 +61,7 @@ const AddRacerFrom = ({ onAddRacer, disable = false }: AddRacerFormProps) => {
     <Form {...form}>
       <form>
         <h1 className="text-center text-2xl text-white font-extrabold">F1 Leaderboard</h1>
-        <Card className="mx-auto max-w-md p-8">
+        <Card className="mx-auto max-w-md">
           <CardHeader>
             <CardTitle className="text-black font-bold">Simulate Your Racer</CardTitle>
             <CardDescription>Input racer name, time, and pick a color tag.</CardDescription>
@@ -90,21 +90,26 @@ const AddRacerFrom = ({ onAddRacer, disable = false }: AddRacerFormProps) => {
               control={form.control}
               name="timeStamp"
               render={({ field }) => (
-                <FormItem className="font-sans">
+                <FormItem className="font-sans overflow-auto">
                   <FormLabel htmlFor="timeStamp" className="text-black font-bold">
                     Time:
                   </FormLabel>
                   <FormControl>
-                    <InputOTP maxLength={6} value={field.value} onChange={field.onChange}>
+                    <InputOTP
+                      maxLength={6}
+                      value={field.value}
+                      onChange={field.onChange}
+                      className="max-w-fit"
+                    >
                       <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl font-bold">
                         <InputOTPSlot index={0} />
                       </InputOTPGroup>
-                      <div className="text-4xl">:</div>
+                      <div className="text-4xl mx-0.5">:</div>
                       <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl font-bold">
                         <InputOTPSlot index={1} />
                         <InputOTPSlot index={2} />
                       </InputOTPGroup>
-                      <div className="text-4xl">.</div>
+                      <div className="text-4xl mx-0.5">.</div>
                       <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl font-bold">
                         <InputOTPSlot index={3} />
                         <InputOTPSlot index={4} />
