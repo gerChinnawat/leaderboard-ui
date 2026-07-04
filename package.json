@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "dotenv -e .env.local -- sh -c 'next dev -p ${PORT:-3000}'",
+    "dev": "dotenv -e .env.local -- sh -c 'next dev -p ${NEXT_PUBLIC_PORT:-3000}'",
     "build": "next build",
-    "start": "dotenv -e .env.local -- sh -c 'next start -p ${PORT:-3000}'",
+    "start": "dotenv -e .env.local -- sh -c 'next start -p ${NEXT_PUBLIC_PORT:-3000}'",
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
