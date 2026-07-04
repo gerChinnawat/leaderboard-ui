@@ -6,7 +6,7 @@ This guide explains our development workflow, coding expectations, and Pull Requ
 
 ---
 
-# Development Workflow
+# 🔄 Development Workflow
 
 Every change should follow this workflow:
 
@@ -34,7 +34,7 @@ Merge into main
 
 ---
 
-# Before You Start
+# 🧭 Before You Start
 
 Before implementing a feature:
 
@@ -45,7 +45,7 @@ Before implementing a feature:
 
 ---
 
-# Branch Strategy
+# 🌱 Branch Strategy
 
 Never develop directly on `main`.
 
@@ -109,7 +109,7 @@ fix1
 
 ---
 
-# Sync With Main
+# 🔁 Sync With Main
 
 Before opening a Pull Request, update your branch.
 
@@ -129,7 +129,7 @@ git rebase main
 
 ---
 
-# Commit Convention
+# 🧾 Commit Convention
 
 This project follows Conventional Commits.
 
@@ -184,7 +184,7 @@ changes
 
 ---
 
-# Coding Standards
+# 📐 Coding Standards
 
 Before committing:
 
@@ -198,7 +198,7 @@ Before committing:
 
 ---
 
-# Testing
+# 🧪 Testing
 
 Every feature should include appropriate tests.
 
@@ -225,7 +225,7 @@ npm run test:e2e
 
 ---
 
-# Pull Request
+# 🚀 Pull Request
 
 ## Title
 
@@ -282,7 +282,7 @@ Uses the existing AuthService.
 
 ---
 
-# Pull Request Checklist
+# ✅ Pull Request Checklist
 
 Before requesting a review:
 
@@ -297,7 +297,7 @@ Before requesting a review:
 
 ---
 
-# Code Review
+# 👀 Code Review
 
 Code reviews are collaborative.
 
@@ -314,7 +314,7 @@ Feedback should be constructive and respectful.
 
 ---
 
-# Definition of Done
+# 🎯 Definition of Done
 
 A task is complete when:
 
@@ -327,7 +327,7 @@ A task is complete when:
 
 ---
 
-# General Principles
+# 🧠 General Principles
 
 ## Write Readable Code
 
@@ -383,7 +383,7 @@ Before introducing a new pattern:
 
 ---
 
-# Asking for Help
+# 🆘 Asking for Help
 
 If you're blocked:
 
@@ -396,7 +396,7 @@ Avoid spending excessive time stuck on one problem.
 
 ---
 
-# Reporting Bugs
+# 🐛 Reporting Bugs
 
 Include:
 
@@ -408,7 +408,7 @@ Include:
 
 ---
 
-# Thank You
+# 🙏 Thank You
 
 Thank you for helping improve this project!
 

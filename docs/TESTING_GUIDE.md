@@ -1,4 +1,3 @@
----
 # 🧪 Testing
 
 This project follows the **Testing Pyramid**, prioritizing fast and reliable tests while ensuring critical user flows are covered.
@@ -13,9 +12,10 @@ Integration Testing
 │
 Unit Testing
 ```
+
 ---
 
-## 📚 Testing Strategy
+# 📚 Testing Strategy
 
 | Test Type        | Tool                         | Purpose                                                   |
 | ---------------- | ---------------------------- | --------------------------------------------------------- |
@@ -29,9 +29,9 @@ Unit Testing
 
 ---
 
-## 🛠️ Testing Setup
+# 🛠️ Testing Setup
 
-### Install Unit & Integration Testing
+## Install Unit & Integration Testing
 
 ```bash
 npm install -D \
@@ -47,7 +47,7 @@ ts-node
 
 ---
 
-### Install End-to-End Testing
+## Install End-to-End Testing
 
 ```bash
 npm init playwright@latest
@@ -62,7 +62,7 @@ npx playwright install
 
 ---
 
-### Required Configuration
+## Required Configuration
 
 ```text
 .
@@ -80,7 +80,7 @@ import '@testing-library/jest-dom';
 
 ---
 
-### Required Scripts
+## Required Scripts
 
 ```json
 {
@@ -97,7 +97,7 @@ import '@testing-library/jest-dom';
 
 ---
 
-## 📁 Test Structure
+# 📁 Test Structure
 
 ```text
 .
@@ -132,7 +132,7 @@ import '@testing-library/jest-dom';
 
 ---
 
-## 🚀 Running Tests
+# 🚀 Running Tests
 
 Run all unit tests
 
@@ -166,9 +166,9 @@ npm run test:e2e:ui
 
 ---
 
-## ✅ What Should Be Tested
+# ✅ What Should Be Tested
 
-### Utilities
+## Utilities
 
 Always test.
 
@@ -186,7 +186,7 @@ generateAvatar();
 
 ---
 
-### Services
+## Services
 
 Always test.
 
@@ -206,7 +206,7 @@ userService
 
 ---
 
-### Custom Hooks
+## Custom Hooks
 
 Test hooks containing business logic.
 
@@ -226,7 +226,7 @@ Verify
 
 ---
 
-### Components
+## Components
 
 Focus on components with behavior.
 
@@ -245,7 +245,7 @@ Avoid testing
 
 ---
 
-### Pages
+## Pages
 
 Pages should primarily be tested with Playwright.
 
@@ -268,7 +268,7 @@ Verify
 
 ---
 
-## 🚫 What NOT to Test
+# 🚫 What NOT to Test
 
 Do not test
 
@@ -282,7 +282,7 @@ Focus on **user behavior**, not implementation details.
 
 ---
 
-## 📦 Mocking
+# 📦 Mocking
 
 Mock external dependencies only.
 
@@ -302,7 +302,7 @@ Avoid mocking
 
 ---
 
-## 📈 Coverage Goals
+# 📈 Coverage Goals
 
 | Module     |         Target |
 | ---------- | -------------: |
@@ -316,7 +316,7 @@ Avoid mocking
 
 ---
 
-## 📜 Test Naming
+# 📜 Test Naming
 
 Describe the expected behavior.
 
@@ -344,7 +344,7 @@ it('login');
 
 ---
 
-## ✅ Testing Principles
+# ✅ Testing Principles
 
 - Test behavior, not implementation.
 - Keep tests independent.
@@ -353,4 +353,4 @@ it('login');
 - Write deterministic tests.
 - Keep tests fast.
 - Prefer E2E for user journeys.
-- Prefer readability over cleverness.ss
+- Prefer readability over cleverness.

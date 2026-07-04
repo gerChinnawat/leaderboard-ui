@@ -41,7 +41,7 @@ describe('toTimeStampForm', () => {
   it('should preserve all digits in correct positions', () => {
     const input = '234567';
     const result = toTimeStampForm(input);
-    
+
     // First character is minute part
     expect(result[0]).toBe('2');
     // Colon separator

@@ -342,7 +342,3 @@ Consistent Git practices:
 If you're unsure:
 
 > Keep branch small, commit clean, PR simple.
-
-```
-
-```

@@ -37,42 +37,50 @@ jest.mock('../../components/AddRacerForm', () => {
 
 // Mock UI components
 jest.mock('@/components/ui/item', () => ({
-  Item: ({ children, ...props }: { children: ReactNode }) => <div data-testid="racer-item" {...props}>{children}</div>,
+  Item: ({ children, ...props }: { children: ReactNode }) => (
+    <div data-testid="racer-item" {...props}>
+      {children}
+    </div>
+  ),
   ItemContent: ({ children }: { children: ReactNode }) => <div>{children}</div>,
-  ItemDescription: ({ children }: { children: ReactNode }) => <div data-testid="item-description">{children}</div>,
-  ItemTitle: ({ children }: { children: ReactNode }) => <div data-testid="item-title">{children}</div>,
+  ItemDescription: ({ children }: { children: ReactNode }) => (
+    <div data-testid="item-description">{children}</div>
+  ),
+  ItemTitle: ({ children }: { children: ReactNode }) => (
+    <div data-testid="item-title">{children}</div>
+  ),
 }));
 
 describe('LeaderboardScreen', () => {
   it('should render the leaderboard screen', () => {
     render(<LeaderboardScreen />);
-    
+
     expect(screen.getByTestId('add-racer-form')).toBeInTheDocument();
   });
 
   it('should render add racer form component', () => {
     render(<LeaderboardScreen />);
-    
+
     expect(screen.getByText(/Add Racer Form/i)).toBeInTheDocument();
   });
 
   it('should display initial racers', () => {
     render(<LeaderboardScreen />);
-    
-    const racer_items = screen.getAllByTestId('racer-item');
-    expect(racer_items.length).toBeGreaterThan(0);
+
+    const racerItems = screen.getAllByTestId('racer-item');
+    expect(racerItems.length).toBeGreaterThan(0);
   });
 
   it('should display the same number of racers as in initial data', () => {
     render(<LeaderboardScreen />);
-    
-    const racer_items = screen.getAllByTestId('racer-item');
-    expect(racer_items.length).toBe(racers.length);
+
+    const racerItems = screen.getAllByTestId('racer-item');
+    expect(racerItems.length).toBe(racers.length);
   });
 
   it('should display racer names', () => {
     render(<LeaderboardScreen />);
-    
+
     const titles = screen.getAllByTestId('item-title');
     expect(titles.length).toBeGreaterThan(0);
   });
@@ -86,32 +94,26 @@ describe('LeaderboardScreen', () => {
 
   it('should display Oscar Piastri as one of the racers', () => {
     render(<LeaderboardScreen />);
-    
+
     const titles = screen.getAllByTestId('item-title');
-    const oscarFound = titles.some((title) =>
-      title.textContent?.includes('Oscar Piastri')
-    );
-    expect(oscarFound).toBe(true);
+    const isOscarFound = titles.some((title) => title.textContent?.includes('Oscar Piastri'));
+    expect(isOscarFound).toBe(true);
   });
 
   it('should display George Russell as one of the racers', () => {
     render(<LeaderboardScreen />);
-    
+
     const titles = screen.getAllByTestId('item-title');
-    const georgeFound = titles.some((title) =>
-      title.textContent?.includes('George Russell')
-    );
-    expect(georgeFound).toBe(true);
+    const isGeorgeFound = titles.some((title) => title.textContent?.includes('George Russell'));
+    expect(isGeorgeFound).toBe(true);
   });
 
   it('should display Max Verstappen as one of the racers', () => {
     render(<LeaderboardScreen />);
-    
+
     const titles = screen.getAllByTestId('item-title');
-    const maxFound = titles.some((title) =>
-      title.textContent?.includes('Max Verstappen')
-    );
-    expect(maxFound).toBe(true);
+    const isMaxFound = titles.some((title) => title.textContent?.includes('Max Verstappen'));
+    expect(isMaxFound).toBe(true);
   });
 
   it('should display racer times in correct format', () => {
@@ -129,9 +131,9 @@ describe('LeaderboardScreen', () => {
 
   it('should render at least 6 racers from initial data', () => {
     render(<LeaderboardScreen />);
-    
-    const racer_items = screen.getAllByTestId('racer-item');
-    expect(racer_items.length).toBeGreaterThanOrEqual(6);
+
+    const racerItems = screen.getAllByTestId('racer-item');
+    expect(racerItems.length).toBeGreaterThanOrEqual(6);
   });
 
   it('should display racer position numbers', () => {
@@ -154,8 +156,8 @@ describe('LeaderboardScreen', () => {
     expect(racerItems.length).toBe(initialCount + 1);
 
     const titles = screen.getAllByTestId('item-title');
-    const newRacerFound = titles.some((title) => title.textContent?.includes('New Racer'));
-    expect(newRacerFound).toBe(true);
+    const isNewRacerFound = titles.some((title) => title.textContent?.includes('New Racer'));
+    expect(isNewRacerFound).toBe(true);
 
     expect(screen.getByText('LEADER')).toBeInTheDocument();
   });

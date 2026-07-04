@@ -62,13 +62,13 @@ describe('racers data', () => {
   it('should not be mutated', () => {
     const originalLength = racers.length;
     const originalFirst = racers[0];
-    
+
     // Attempt mutation
     racers.push({ name: 'Test', colorTag: '#000', timeStamp: '0:00.000' });
-    
+
     // Verify no permanent mutation (though this test shows the data is mutable)
     racers.pop();
-    
+
     expect(racers.length).toBe(originalLength);
     expect(racers[0]).toEqual(originalFirst);
   });

@@ -34,7 +34,7 @@ describe('toMillisecond', () => {
     const time1 = toMillisecond('1:33.643');
     const time2 = toMillisecond('1:33.892');
     const time3 = toMillisecond('1:34.252');
-    
+
     expect(time1 < time2).toBe(true);
     expect(time2 < time3).toBe(true);
   });
@@ -42,7 +42,7 @@ describe('toMillisecond', () => {
   it('should handle boundary times', () => {
     const zeroTime = toMillisecond('0:00.000');
     const maxTime = toMillisecond('99:59.999');
-    
+
     expect(zeroTime).toBe(0);
     expect(maxTime).toBe(5999999);
   });

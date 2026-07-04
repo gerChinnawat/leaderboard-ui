@@ -40,28 +40,28 @@ describe('Racer interface', () => {
 
   it('should accept different time formats', () => {
     const times = ['1:33.643', '2:15.500', '0:59.999'];
-    
+
     times.forEach((time) => {
       const racer: Racer = {
         name: 'Test',
         colorTag: '#fff',
         timeStamp: time,
       };
-      
+
       expect(racer.timeStamp).toBe(time);
     });
   });
 
   it('should accept different hex color formats', () => {
     const colors = ['#fff', '#ffffff', '#ffa500', '#2244ff'];
-    
+
     colors.forEach((color) => {
       const racer: Racer = {
         name: 'Test',
         colorTag: color,
         timeStamp: '1:30.000',
       };
-      
+
       expect(racer.colorTag).toBe(color);
     });
   });

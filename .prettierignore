@@ -1,0 +1,17 @@
+# dependencies
+node_modules
+
+# testing artifacts
+coverage
+playwright-report
+test-results
+
+# next.js build output
+.next
+out
+build
+
+# generated files
+next-env.d.ts
+*.tsbuildinfo
+package-lock.json

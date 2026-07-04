@@ -1,7 +1,7 @@
----
 # 📐 Coding Guide
 
 This section defines the coding standards used throughout the project. Following these conventions helps maintain a clean, consistent, and scalable codebase.
+
 ---
 
 # 📝 Naming Convention
